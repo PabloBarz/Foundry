@@ -1,0 +1,117 @@
+/* Estilos generales y paleta de colores */
+:root {
+  --primary: #0078d4;      /* Azul estilo Azure */
+  --primary-hover: #106ebe;
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --border: #d1d5db;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Encabezado */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+header p {
+  color: var(--text-muted);
+}
+
+/* Contenedor del formulario */
+div {
+  background-color: var(--card);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+#formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input para subir archivo */
+#archivo {
+  padding: 15px;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+#archivo:hover {
+  border-color: var(--primary);
+}
+
+/* Botón principal */
+#btnExtraer {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#btnExtraer:hover {
+  background-color: var(--primary-hover);
+}
+
+#btnExtraer:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Mensaje de estado */
+#estado {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--primary);
+  min-height: 22px;
+}
+
+/* Sección donde se muestran los resultados */
+#resultados {
+  background-color: var(--card);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap; /* Mantiene los saltos de línea del PDF */
+  word-wrap: break-word;
+}
+
+/* Ocultar la caja de resultados si aún no tiene contenido */
+#resultados:empty {
+  display: none;
+}

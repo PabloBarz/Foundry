@@ -48,7 +48,7 @@ export async function leerPDF(buffer){
   //Deserializar...
   const {endpoint, key, apiVersion, model} = config()
 
-  const url = `${endpoint}/documentintelligence/documentModels/${model}:analize?api-version=${apiVersion}`
+  const url = `${endpoint}/documentintelligence/documentModels/${model}:analyze?api-version=${apiVersion}`
   const res = await fetch(url,{
     method: "POST",
     headers: {
@@ -62,7 +62,13 @@ export async function leerPDF(buffer){
   }
 
   //Tenemos exito
-  const operationURL = res.headers.get('operation-location')
+  const operationUrl = res.headers.get('operation-location')
+
+  if (!operationUrl) {
+  throw new OcrError("Azure no devolvió la URL de seguimiento", 502)
+}
+
+  
 
   //2. Consulta (polling) hasta que termine   
   for (let intento = 0; intento < 60; intento++){

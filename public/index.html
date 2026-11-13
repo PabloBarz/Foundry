@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analizando PDF con Azure</title>
+  <!-- Descomenta la siguiente línea si ya tienes tu archivo CSS -->
+  <link rel="stylesheet" href="./css/style.css"> 
+</head>
+<body>
+  <header>
+    <h1>Lector de PDF</h1>
+    <p>Sube un archivo PDF para analizarlo con Azure...</p>
+  </header>
+
+  <div>
+    <form action="" id="formulario">
+      <input type="file" id="archivo" name="archivo" accept="application/pdf" required>
+      <button type="submit" id="btnExtraer">Extraer datos</button>
+      <p id="estado"></p>
+    </form>
+  </div>
+
+  <!-- Contenedor para mostrar el texto extraído -->
+  <section id="resultados" >
+  </section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

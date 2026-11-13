@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000
 
 const MAX_FILE_MB = Number(process.env.MAX_FILE_MB) || 4
 
-for(const nombre of ["DI_ENPOINT", "DI_KEY"]){
+for(const nombre of ["DI_ENDPOINT", "DI_KEY"]){
   if(!process.env[nombre]){
     console.error(`Falta ${nombre}. Revisa tu archivo .env`)
     process.exit(1)
@@ -61,7 +61,7 @@ app.use((err, req, res, next) => {
   }
 
   if (err instanceof OcrError){
-    return res.status(err.status).json({error: message})
+    return res.status(err.status).json({error: err.message})
   }
 
   console.error(err)
@@ -69,8 +69,8 @@ app.use((err, req, res, next) => {
     error: 'Error interno del servidor'
   })
 
-  app.listen(PORT, () =>{
-    console.log(`Aplicacion ejecutandose en http://localhost${PORT}`)
-  })
+})
 
+app.listen(PORT, () =>{
+  console.log(`Aplicacion ejecutandose en http://localhost:${PORT}`)
 })
