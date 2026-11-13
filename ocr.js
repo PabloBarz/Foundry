@@ -43,7 +43,7 @@ async function fallo(res, contexto){
 }
 
 //NO es necesario guardar el PDF de manera fisica
-async function leerPDF(buffer){
+export async function leerPDF(buffer){
   //Necesitamos los parametros de conexion -> config()
   //Deserializar...
   const {endpoint, key, apiVersion, model} = config()
