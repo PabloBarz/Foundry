@@ -1,0 +1,432 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 850px;
+    height: 85vh;
+    min-height: 500px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Encabezado */
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #172554;
+    color: white;
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bot-avatar {
+    font-size: 30px;
+}
+
+.chat-header h1 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.chat-header p {
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+.status {
+    font-size: 12px;
+    color: #bbf7d0;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Conversación */
+
+.chat-messages {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 85%;
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-content {
+    padding: 13px 16px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    line-height: 1.6;
+    font-size: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.user-message .message-content {
+    background: #2563eb;
+    color: white;
+}
+
+/* Formulario */
+
+.chat-footer {
+    padding: 18px 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.chat-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-form textarea {
+    flex: 1;
+    resize: none;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 13px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.chat-form textarea:focus {
+    border-color: #2563eb;
+}
+
+.chat-form button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.chat-form button:hover {
+    background: #1d4ed8;
+}
+
+.chat-form button:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+.footer-info {
+    text-align: center;
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 12px;
+}
+
+.error-message {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+
+    .chat-container {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .chat-messages {
+        padding: 15px;
+    }
+
+    .message {
+        max-width: 95%;
+    }
+
+    .chat-header {
+        padding: 15px;
+    }
+
+    .chat-form button {
+        padding: 12px;
+    }
+}
+
+/* Formato Markdown de las respuestas */
+
+.message-content p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.message-content p:last-child {
+    margin-bottom: 0;
+}
+
+.message-content strong {
+    font-weight: 700;
+}
+
+.message-content em {
+    font-style: italic;
+}
+
+.message-content ul,
+.message-content ol {
+    padding-left: 22px;
+    margin: 10px 0;
+}
+
+.message-content li {
+    margin-bottom: 6px;
+}
+
+.message-content h1,
+.message-content h2,
+.message-content h3 {
+    margin: 14px 0 8px;
+}
+
+.message-content code {
+    background: #e2e8f0;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.message-content pre {
+    background: #1e293b;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.message-content blockquote {
+    border-left: 4px solid #2563eb;
+    padding-left: 12px;
+    margin: 10px 0;
+    color: #475569;
+}
+
+
+/* =====================================
+   IDENTIDAD VISUAL - HISTORIA DEL PERÚ
+===================================== */
+
+:root {
+    --peru-red: #d71920;
+    --peru-dark: #8f1018;
+    --peru-white: #ffffff;
+    --peru-gold: #d6a84b;
+    --peru-bg: #f8f5f0;
+    --peru-text: #292524;
+}
+
+/* Fondo general */
+body {
+    background: #f3eee7;
+}
+
+/* Contenedor principal */
+.chat-container {
+    background: var(--peru-white);
+    border: 1px solid #e8ddd0;
+    box-shadow: 0 12px 40px rgba(75, 35, 25, 0.10);
+}
+
+/* Encabezado */
+.chat-header {
+    background: linear-gradient(
+        120deg,
+        #8f1018,
+        #bd1821,
+        #d71920
+    );
+    border-bottom: 4px solid var(--peru-gold);
+    padding: 20px 25px;
+}
+
+/* Información del encabezado */
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Bandera animada */
+.peru-flag {
+    width: 72px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 7px;
+    border: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Título */
+.chat-header h1 {
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.chat-header p {
+    color: #ffe5e5;
+}
+
+/* Estado */
+.status {
+    color: white;
+}
+
+.status-dot {
+    background: #4ade80;
+}
+
+/* Área de conversación */
+.chat-messages {
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.94),
+            rgba(255,255,255,0.94)
+        ),
+        repeating-linear-gradient(
+            45deg,
+            #e9d9c8 0px,
+            #e9d9c8 1px,
+            transparent 1px,
+            transparent 15px
+        );
+}
+
+/* Mensajes del asistente */
+.bot-message .message-avatar {
+    background: #fce8e8;
+    color: var(--peru-dark);
+}
+
+.bot-message .message-content {
+    background: #f7f2ed;
+    color: var(--peru-text);
+    border: 1px solid #eee2d8;
+    border-radius: 4px 14px 14px 14px;
+}
+
+/* Mensajes del usuario */
+.user-message .message-content {
+    background: var(--peru-red);
+    color: white;
+    border-radius: 14px 4px 14px 14px;
+}
+
+/* Avatar del usuario */
+.user-message .message-avatar {
+    background: #fce8e8;
+}
+
+/* Área de escritura */
+.chat-footer {
+    background: white;
+    border-top: 1px solid #eadfd5;
+}
+
+.chat-form textarea:focus {
+    border-color: var(--peru-red);
+}
+
+/* Botón enviar */
+.chat-form button {
+    background: var(--peru-red);
+}
+
+.chat-form button:hover {
+    background: var(--peru-dark);
+}
+
+/* Texto inferior */
+.footer-info {
+    color: #8f1018;
+}
+
+/* Errores */
+.error-message {
+    color: #b91c1c;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 600px) {
+    .peru-flag {
+        width: 55px;
+        height: 38px;
+    }
+
+    .chat-header h1 {
+        font-size: 17px;
+    }
+
+    .chat-header p {
+        font-size: 11px;
+    }
+}

@@ -4,7 +4,11 @@ import multer from "multer"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { leerPDF, OcrError } from "./ocr.js"
+import { consultarHistoria } from "./chatService.js"
 
+const app = express()
+
+// Procesar solicitudes con contenido JSON
 //Directorio donde desplegamos frontend
 //Carpeta absoluta independiente Windows / Linux / Mac
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -21,7 +25,7 @@ for(const nombre of ["DI_ENDPOINT", "DI_KEY"]){
   }
 } 
 
-const app = express()
+app.use(express.json({ limit: "10kb" }))
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -47,6 +51,40 @@ app.post('/api/ocr', upload.single("archivo"), async(req, res, next) => {
   }catch(e){
     next(e)
   }
+})
+
+// Método POST para consultar al asistente de Historia del Perú
+app.post("/api/chat", async (req, res, next) => {
+
+  try {
+
+    const { pregunta } = req.body
+
+    // Validar pregunta
+    if (typeof pregunta !== "string" || !pregunta.trim()) {
+      return res.status(400).json({
+        error: "Debes escribir una pregunta"
+      })
+    }
+
+    // Limitar longitud del mensaje
+    if (pregunta.length > 2000) {
+      return res.status(400).json({
+        error: "La pregunta no puede superar los 2000 caracteres"
+      })
+    }
+
+    // Consultar Azure AI Foundry
+    const respuesta = await consultarHistoria(pregunta.trim())
+
+    return res.json({
+      respuesta
+    })
+
+  } catch (error) {
+    next(error)
+  }
+
 })
 
 //Manejo de errores centralizado

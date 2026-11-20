@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia del Perú | Asistente IA</title>
+
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+
+    <main class="chat-container">
+
+        <header class="chat-header">
+
+            <div class="header-info">
+
+                <iframe src="https://giphy.com/embed/R0MUONmYJfkXpEHOk9" width="150" height="100"  frameBorder="0" ></iframe>
+
+                <div>
+                    <h1>Historia del Perú</h1>
+                    <p>Un viaje por nuestra historia y cultura</p>
+                </div>
+
+            </div>
+
+            <span class="status">
+                <span class="status-dot"></span>
+                En línea
+            </span>
+
+        </header>
+
+        <section class="chat-messages" id="chatMessages">
+
+            <div class="message bot-message">
+                <div class="message-avatar">🏛️</div>
+
+                <div class="message-content">
+                    <p>
+                        ¡Hola! Soy tu asistente de Historia del Perú.
+                        Puedes preguntarme sobre las culturas preincas,
+                        el Imperio incaico, la conquista, la independencia
+                        y muchos otros acontecimientos históricos.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="chat-footer">
+
+            <form id="chatForm" class="chat-form">
+
+                <textarea
+                    id="messageInput"
+                    placeholder="Escribe tu pregunta sobre Historia del Perú..."
+                    rows="1"
+                    required
+                ></textarea>
+
+                <button type="submit" id="sendButton">
+                    Enviar
+                </button>
+
+            </form>
+
+            <p class="footer-info">
+                Este asistente responde exclusivamente sobre Historia del Perú.
+            </p>
+
+            <p id="errorMessage" class="error-message"></p>
+
+        </div>
+
+    </main>
+
+    <!-- Biblioteca para interpretar Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+
+    <!-- Biblioteca para sanitizar HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+    <script src="./js/chatgpt.js"></script>
+
+</body>
+</html>
