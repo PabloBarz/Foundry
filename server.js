@@ -5,6 +5,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { leerPDF, OcrError } from "./ocr.js"
 import { consultarHistoria } from "./chatService.js"
+import { clasificarTexto } from "./clasificacionService.js"
 
 const app = express()
 
@@ -25,7 +26,7 @@ for(const nombre of ["DI_ENDPOINT", "DI_KEY"]){
   }
 } 
 
-app.use(express.json({ limit: "10kb" }))
+app.use(express.json({ limit: "100kb" }))
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -86,6 +87,38 @@ app.post("/api/chat", async (req, res, next) => {
   }
 
 })
+
+app.post("/api/clasificar", async (req, res, next) => {
+
+    try {
+
+        const { texto } = req.body
+
+        if (typeof texto !== "string" || !texto.trim()) {
+            return res.status(400).json({
+                error: "Debes ingresar un texto"
+            })
+        }
+
+        if (texto.length > 12000) {
+            return res.status(400).json({
+                error: "El texto supera los 12000 caracteres"
+            })
+        }
+
+        const resultado = await clasificarTexto(texto.trim())
+
+        return res.json({
+            exito: true,
+            clasificacion: resultado
+        })
+
+    } catch (error) {
+        next(error)
+    }
+
+})
+
 
 //Manejo de errores centralizado
 app.use((err, req, res, next) => {

@@ -1,0 +1,512 @@
+
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+========================================= */
+
+:root {
+    --primary: #24352F;
+    --primary-light: #354D43;
+    --secondary: #D5A66B;
+    --secondary-light: #E9D2B2;
+
+    --background: #F5F1E9;
+    --surface: #FFFFFF;
+    --surface-soft: #F8F7F3;
+
+    --text: #26332D;
+    --text-muted: #718078;
+
+    --border: #E5E6DF;
+
+    --success: #26734D;
+    --success-bg: #E5F3E9;
+
+    --danger: #B94B45;
+    --danger-bg: #FBECEA;
+
+    --warning: #A8752F;
+    --warning-bg: #FAF0DD;
+
+    --shadow: 0 12px 35px rgba(36, 53, 47, 0.08);
+
+    --radius: 14px;
+    --transition: 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px 20px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. CONTENEDOR PRINCIPAL
+========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+
+    background: var(--surface);
+
+    border: 1px solid rgba(36, 53, 47, 0.06);
+    border-radius: 20px;
+
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+/* =========================================
+   3. ENCABEZADO
+========================================= */
+
+.header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 28px 35px;
+
+    background: var(--primary);
+    color: white;
+
+    border-bottom: 4px solid var(--secondary);
+}
+
+.header-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 31px;
+
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 16px;
+}
+
+.header h1 {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.header p {
+    margin-top: 3px;
+
+    font-size: 14px;
+    color: #D8E0D9;
+}
+
+/* =========================================
+   4. ÁREA DE TRABAJO
+========================================= */
+
+.workspace {
+    padding: 35px;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.section-heading p {
+    margin-top: 5px;
+
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   5. FORMULARIO
+========================================= */
+
+#classificationForm label {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 14px;
+    font-weight: 650;
+    color: var(--primary);
+}
+
+#textInput {
+    display: block;
+
+    width: 100%;
+    min-height: 190px;
+    padding: 17px;
+
+    resize: vertical;
+
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: var(--text);
+    background: var(--surface-soft);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    outline: none;
+    transition: var(--transition);
+}
+
+#textInput::placeholder {
+    color: #9AA39D;
+}
+
+#textInput:focus {
+    background: white;
+    border-color: var(--secondary);
+
+    box-shadow: 0 0 0 4px rgba(213, 166, 107, 0.15);
+}
+
+/* =========================================
+   6. PIE DEL FORMULARIO
+========================================= */
+
+.input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+#charCount {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   7. BOTONES
+========================================= */
+
+#classifyButton {
+    min-width: 155px;
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 14px;
+    font-weight: 650;
+
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#classifyButton:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(36, 53, 47, 0.17);
+}
+
+#classifyButton:active {
+    transform: translateY(0);
+}
+
+#classifyButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   8. MENSAJES DE ESTADO
+========================================= */
+
+.status-message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.status-message:empty {
+    display: none;
+}
+
+/* =========================================
+   9. RESULTADOS
+========================================= */
+
+.results {
+    margin-top: 30px;
+    padding-top: 28px;
+
+    border-top: 1px solid var(--border);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.results-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.results-heading h2 {
+    font-size: 21px;
+    color: var(--primary);
+}
+
+/* Etiqueta de resultado */
+
+.result-tag {
+    padding: 6px 13px;
+
+    border-radius: 30px;
+
+    background: var(--success-bg);
+    color: var(--success);
+
+    font-size: 12px;
+    font-weight: 650;
+}
+
+/* =========================================
+   10. TARJETAS DE RESULTADOS
+========================================= */
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.result-card {
+    min-height: 105px;
+    padding: 20px;
+
+    background: var(--surface-soft);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition: var(--transition);
+}
+
+.result-card:hover {
+    border-color: var(--secondary-light);
+    transform: translateY(-2px);
+}
+
+.result-label {
+    display: block;
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.result-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+
+    text-transform: capitalize;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   11. EMOCIONES
+========================================= */
+
+.emotions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.emotions span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 12px;
+
+    border-radius: 30px;
+
+    background: #EEE8DB;
+    color: #775A32;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================================
+   12. TARJETAS DE DETALLE
+========================================= */
+
+.detail-card {
+    margin-top: 16px;
+    padding: 21px;
+
+    background: var(--surface-soft);
+
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--secondary);
+
+    border-radius: var(--radius);
+}
+
+.detail-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.detail-card p {
+    font-size: 14px;
+    line-height: 1.8;
+
+    color: #58655E;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   13. PIE DE PÁGINA
+========================================= */
+
+footer {
+    padding: 17px 25px;
+
+    text-align: center;
+
+    background: var(--surface-soft);
+    border-top: 1px solid var(--border);
+}
+
+footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   14. ANIMACIÓN DE RESULTADOS
+========================================= */
+
+.results:not(.hidden) {
+    animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   15. RESPONSIVE
+========================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .container {
+        border-radius: 14px;
+    }
+
+    .header {
+        padding: 22px 18px;
+        gap: 12px;
+    }
+
+    .header-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 26px;
+        flex-shrink: 0;
+    }
+
+    .header h1 {
+        font-size: 19px;
+    }
+
+    .header p {
+        font-size: 12px;
+    }
+
+    .workspace {
+        padding: 22px 17px;
+    }
+
+    .section-heading h2 {
+        font-size: 20px;
+    }
+
+    #textInput {
+        min-height: 170px;
+        font-size: 14px;
+    }
+
+    .input-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #classifyButton {
+        width: 100%;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .results-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .result-card {
+        min-height: 90px;
+    }
+}
